@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CollegeApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CollegeApp.Controllers
 {
@@ -7,9 +8,15 @@ namespace CollegeApp.Controllers
     public class StudentController : ControllerBase
     {
         [HttpGet]
-        public string GetStudentName()
+        public IEnumerable<Student> GetStudentName()
         {
-            return "Student name 1";
+            return CollegeRepository.Students;
+        }
+
+        [HttpGet("{id:int}")]
+        public Student GetStudentById(int id)
+        {
+            return CollegeRepository.Students.FirstOrDefault(n => n.Id == id);
         }
     }
 }
