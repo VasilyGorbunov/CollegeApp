@@ -16,7 +16,7 @@ namespace CollegeApp.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetStudentById")]
+        [Route("{id:int}", Name = "GetStudentById")]
         public Student GetStudentById(int id)
         {
             return CollegeRepository
@@ -25,7 +25,7 @@ namespace CollegeApp.Controllers
                     .FirstOrDefault();
         }
 
-        [HttpGet("{name}", Name = "GetStudentByName")]
+        [HttpGet("{name:alpha}", Name = "GetStudentByName")]
         public Student GetStudentByName(string name)
         {
             return CollegeRepository
